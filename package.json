@@ -1,0 +1,40 @@
+{
+  "name": "react-hot-boilerplate",
+  "version": "1.0.0",
+  "description": "Unversal/isomorphic ReactJS project with hot code reloading",
+  "scripts": {
+    "start_dev": "webpack && node server.js",
+    "start": "node server/entrypoint.js",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qmacpit/react-universal-proto.git"
+  },  
+  "author": "qmacpit <qmacpit@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-register": "^6.4.3",
+    "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "history": "^1.17.0",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.5",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "eslint-plugin-react": "^3.6.2",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  }  
+}
