@@ -1,7 +1,9 @@
 import React from 'react';
+import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server';
 import { match, RoutingContext, Router, Route} from 'react-router';
 import routes from '../client/routes/root';
+import configureStore from '../client/store/dataStore';
 
 var express = require("express");
 var bodyParser = require("body-parser");
@@ -46,28 +48,39 @@ app.get('/api/details/:id', (req, res) => {
   res.send({});
 });
 
-app.get('/', (req, res) => {
-  res.render('index', {
-        markup: ""
-      });
-});
-
-
-// app.get('*', (req, res) => {  
-//   match({ routes: routes, location: req.url }, (error, redirectLocation, renderProps) => {    
-//     if (error) {
-//       res.status(500).send(error.message)
-//     } else if (redirectLocation) {
-//       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
-//     } else if (renderProps) {
-//       res.render('index', {
-//         markup: renderToString(<RoutingContext {...renderProps} />)
+// app.get('/', (req, res) => {
+//   res.render('index', {
+//         markup: ""
 //       });
-//     } else {      
-//       res.status(404).send('Not found')
-//     }
-//   })
 // });
+
+
+app.get('*', (req, res) => {  
+  match({ routes: routes, location: req.url }, (error, redirectLocation, renderProps) => {    
+    if (error) {
+      res.status(500).send(error.message)
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+    } else if (renderProps) {
+      let store = configureStore({ 
+        loadData: {
+          data: data
+        }
+      });
+      console.log(store.getState())
+      res.render('index', {
+        markup: renderToString(
+          <Provider store={store}>
+            <RoutingContext {...renderProps} />
+          </Provider>
+        ),
+        initialState: store.getState()
+      });
+    } else {      
+      res.status(404).send('Not found')
+    }
+  })
+});
 
 server.listen(8080, function() {
   console.log('server started');

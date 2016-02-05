@@ -4,10 +4,16 @@ import createLogger from 'redux-logger'
 import dataReducer from '../reducers'
 
 export default function configureStore(initialState) {
-  const store = createStore(
+
+  const store = typeof window !== "undefined" 
+  ? createStore(
     dataReducer,
-    initialState,
+    initialState,    
     applyMiddleware(thunkMiddleware, createLogger())
+  )
+  : createStore(
+    dataReducer,
+    initialState  
   )
 
   if (module.hot) {

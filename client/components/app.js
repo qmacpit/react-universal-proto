@@ -11,11 +11,6 @@ class App extends Component {
     dispatch(fetchData());
   }
 
-  // componentWillReceiveProps(prev, next) {
-  //   console.log(prev);
-  //   console.log(next);
-  // }
-
   getDatailsLink(current) {
     return `/details/${current.id}`;
   }
@@ -23,14 +18,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!!!????</h1>
-        <Link to='/details/1'>click</Link>
+        <h1>Hello, world!!!????</h1>        
         {
           this.props && this.props.data
           ? (
             this.props.data.map((current, index) => {
               return (
-                <div>
+                <div key={index}>
                   <Link to={this.getDatailsLink(current)}>{current.data}</Link>
                 </div>
               )

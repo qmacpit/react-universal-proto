@@ -8,8 +8,6 @@ import { fetchDetails, findDataElementById } from '../actions';
 class DetailsComponent extends Component {
 
   componentDidMount() {
-    // console.log('details mounted')
-    // console.log(this.props)    
     const { dispatch } = this.props
     const { id } = this.props.params
     dispatch(fetchDetails(parseInt(id)));
@@ -20,9 +18,6 @@ class DetailsComponent extends Component {
       parseInt(this.props.params.id),
       this.props.data
     )
-    console.log('details')
-    console.log(element)
-    console.log(this.props.data)
     return (
       <div>
         <h1>This is details!!!???</h1>   

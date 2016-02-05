@@ -9,7 +9,7 @@ import configureStore from './store/dataStore'
 
 const { pathname, search, hash } = window.location
 const location = `${pathname}${search}${hash}`
-const store = configureStore()
+const store = configureStore(window.__INITIAL_STATE__);
 
 ReactDOM.render(
     <Provider store={store}>
