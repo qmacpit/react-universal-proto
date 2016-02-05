@@ -5,7 +5,8 @@ export const RECEIVE_DATA = 'RECEIVE_DATA'
 
 function requestData() {
   return {
-    type: REQUEST_DATA
+    type: REQUEST_DATA,
+    data: []
   }
 }
 
@@ -19,6 +20,8 @@ function performFetchData() {
 }
 
 function receiveData(data) {
+  console.log(`dispatch: ${RECEIVE_DATA}`)
+  console.log(data)
   return {
     type: RECEIVE_DATA,
     data: data

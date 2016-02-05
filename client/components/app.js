@@ -8,14 +8,33 @@ class App extends Component {
   
   componentDidMount() {
     const { dispatch } = this.props
-    // dispatch(fetchData());
+    dispatch(fetchData());
+  }
+
+  componentWillReceiveProps(prev, next) {
+    console.log(prev);
+    console.log(next);
   }
 
   render() {
+    console.log('rendering');
+    if (this.state)
+      console.log(this.state.data);
+    if (this.props)
+      console.log(this.props.data);
     return (
       <div>
         <h1>Hello, world!!!????</h1>
         <Link to='/details/1'>click</Link>
+        {
+          this.props && this.props.data
+          ? (
+            this.props.data.map((current, index) => {
+              return <div key={index}>{current.data}</div>
+            })
+          )
+          : ''
+        }
       </div>
     );
   }
@@ -23,7 +42,7 @@ class App extends Component {
 
 function mapStateToProps(state) {  
   return {
-    data: state.data
+    data: state.loadData.data
   }
 }
 
