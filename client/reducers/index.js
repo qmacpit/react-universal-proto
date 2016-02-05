@@ -15,9 +15,7 @@ import {
 //   }  
 // }
 
-function loadData(state = {}, action) {
-  console.log(action)
-  console.log(state)
+function loadData(state = {}, action) {  
   switch (action.type) {
     case REQUEST_DATA:
       return [];

@@ -20,8 +20,6 @@ function performFetchData() {
 }
 
 function receiveData(data) {
-  console.log(`dispatch: ${RECEIVE_DATA}`)
-  console.log(data)
   return {
     type: RECEIVE_DATA,
     data: data
@@ -31,7 +29,9 @@ function receiveData(data) {
 export function fetchData(data) {
   return (dispatch, getState) => {
     let state = getState();
-    if (!state.data)
+    console.log('checking state')
+    console.log(state)
+    if (!state.loadData.data.length)
       return dispatch(performFetchData());    
   }
 }

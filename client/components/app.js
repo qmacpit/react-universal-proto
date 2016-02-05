@@ -11,17 +11,16 @@ class App extends Component {
     dispatch(fetchData());
   }
 
-  componentWillReceiveProps(prev, next) {
-    console.log(prev);
-    console.log(next);
+  // componentWillReceiveProps(prev, next) {
+  //   console.log(prev);
+  //   console.log(next);
+  // }
+
+  getDatailsLink(current) {
+    return `/details/${current.id}`;
   }
 
   render() {
-    console.log('rendering');
-    if (this.state)
-      console.log(this.state.data);
-    if (this.props)
-      console.log(this.props.data);
     return (
       <div>
         <h1>Hello, world!!!????</h1>
@@ -30,7 +29,11 @@ class App extends Component {
           this.props && this.props.data
           ? (
             this.props.data.map((current, index) => {
-              return <div key={index}>{current.data}</div>
+              return (
+                <div>
+                  <Link to={this.getDatailsLink(current)}>{current.data}</Link>
+                </div>
+              )
             })
           )
           : ''
