@@ -36,6 +36,16 @@ app.get('/api/data', (req, res) => {
   res.send(data);
 });
 
+app.get('/api/details/:id', (req, res) => {
+  let id = parseInt(req.params.id);
+  let current;
+  for (current of data) {
+    if (current.id === id)
+      return res.send(current);
+  }
+  res.send({});
+});
+
 app.get('/', (req, res) => {
   res.render('index', {
         markup: ""
