@@ -20,7 +20,7 @@ class DetailsComponent extends Component {
     )
     return (
       <div>
-        <h1>This is details!!!???</h1>   
+        <h1>This is details!!!</h1>   
         {
           element && element.details
           ? (
